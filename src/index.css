@@ -1,1 +1,180 @@
 @import "tailwindcss";
+
+@theme {
+  /* Code to the Bone — warm paper, charcoal ink, muted teal */
+  --color-paper: #faf6ef;
+  --color-card: #fffdf7;
+  --color-ink: #26231d;
+  --color-ink-soft: #5c574b;
+  --color-ink-faint: #8b8574;
+  --color-line: #e4ddcd;
+  --color-line-soft: #ede7d9;
+  --color-teal: #2e6e62;
+  --color-teal-deep: #245a50;
+  --color-teal-bright: #4c9484;
+  --color-teal-foam: #8fc2b4;
+  --color-teal-mist: #e2ede7;
+  --color-coal: #23211b;
+  --color-coal-raise: #2b2820;
+  --color-coal-line: #3a362a;
+  --color-sand: #e3c48f;
+  --color-paper-dim: #cfc8b8;
+
+  --font-display: "Space Grotesk", "IBM Plex Sans", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  /* ambient layer: a quiet engineering-grid of dots */
+  background-image: radial-gradient(rgba(38, 35, 29, 0.055) 1px, transparent 1.3px);
+  background-size: 24px 24px;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-teal);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.on-dark :focus-visible {
+  outline-color: var(--color-teal-foam);
+}
+
+/* ---------- signature motion ---------- */
+
+/* line-mask reveal for the hero headline */
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.mask-line > span {
+  display: block;
+  transform: translateY(115%);
+  animation: rise 0.9s cubic-bezier(0.22, 0.75, 0.2, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes rise {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* gentle fade for supporting hero elements */
+.fade-in {
+  opacity: 0;
+  animation: fade-in 0.8s ease forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+/* code lines slide in, one after another */
+.code-line {
+  opacity: 0;
+  animation: line-in 0.5s ease-out forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes line-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* the ever-present terminal cursor */
+.cursor-blink {
+  animation: blink 1.1s linear infinite;
+}
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* slow topic ticker */
+.marquee-track {
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* scroll reveals */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.22, 0.75, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- reduced motion: everything settles instantly ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .mask-line > span,
+  .code-line,
+  .fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .cursor-blink,
+  .marquee-track {
+    animation: none;
+  }
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
