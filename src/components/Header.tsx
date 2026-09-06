@@ -12,7 +12,7 @@ const NAV_LINKS = [
 export function BrandMark({ onDark = false }: { onDark?: boolean }) {
   return (
     <span className="inline-flex items-baseline font-mono text-[15px] font-bold tracking-tight">
-      <span className={onDark ? "text-cyan" : "text-teal"}>&lt;/</span>
+      <span className={onDark ? "text-cyan" : "text-teal"}>&lt;</span>
       <span className={onDark ? "text-surface" : "text-navy-800"}>CTB</span>
       <span className={onDark ? "text-cyan" : "text-teal"}>&gt;</span>
     </span>
