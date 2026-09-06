@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import Hero, { MarqueeStrip } from "./components/Hero";
+import Hero from "./components/Hero";
 import Highlights from "./components/Highlights";
 import About from "./components/About";
 import Community from "./components/Community";
@@ -7,24 +7,20 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="min-h-screen overflow-x-clip">
+    <div className="min-h-screen overflow-x-clip font-body text-navy-800">
       <a
         href="#content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-paper"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-navy-800 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-surface"
       >
         Skip to content
       </a>
-
       <Header />
-
       <main>
         <Hero />
-        <MarqueeStrip />
         <Highlights />
         <About />
         <Community />
       </main>
-
       <Footer />
     </div>
   );

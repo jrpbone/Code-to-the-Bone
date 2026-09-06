@@ -3,22 +3,19 @@ import { FACEBOOK_PAGE_URL } from "../lib/config";
 import { CloseIcon, FacebookIcon, MenuIcon } from "./Icons";
 
 const NAV_LINKS = [
-  { label: "Content", href: "#content" },
-  { label: "About", href: "#about" },
-  { label: "Community", href: "#community" },
+  { num: "01", label: "Explore", href: "#content" },
+  { num: "02", label: "About", href: "#about" },
+  { num: "03", label: "Community", href: "#community" },
 ];
 
-function Wordmark() {
+/** Compact angle-bracket brand mark: </CTB> */
+export function BrandMark({ onDark = false }: { onDark?: boolean }) {
   return (
-    <a href="#top" className="group inline-flex items-center gap-2 rounded-sm">
-      <span className="font-display text-[17px] font-bold tracking-tight text-ink">
-        Code to the Bone
-      </span>
-      <span
-        aria-hidden="true"
-        className="cursor-blink inline-block h-[15px] w-[7px] translate-y-[2px] rounded-[1px] bg-teal"
-      />
-    </a>
+    <span className="inline-flex items-baseline font-mono text-[15px] font-bold tracking-tight">
+      <span className={onDark ? "text-cyan" : "text-teal"}>&lt;/</span>
+      <span className={onDark ? "text-surface" : "text-navy-800"}>CTB</span>
+      <span className={onDark ? "text-cyan" : "text-teal"}>&gt;</span>
+    </span>
   );
 }
 
@@ -35,21 +32,35 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-paper transition-[border-color,box-shadow] duration-300 ${
-        scrolled ? "border-line shadow-[0_6px_20px_-16px_rgba(38,35,29,0.5)]" : "border-transparent"
+      className={`sticky top-0 z-50 border-b bg-surface/95 backdrop-blur-sm transition-[border-color,box-shadow] duration-300 ${
+        scrolled
+          ? "border-linecool shadow-[0_8px_24px_-20px_rgba(13,42,74,0.6)]"
+          : "border-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-        <Wordmark />
+        <a href="#top" className="inline-flex items-center gap-3 rounded-sm">
+          <BrandMark />
+          <span
+            aria-hidden="true"
+            className="hidden h-5 w-px bg-linecool sm:block"
+          />
+          <span className="font-display text-[16px] font-bold tracking-tight text-navy-800">
+            Code to the Bone
+          </span>
+        </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="rounded-sm text-sm text-ink-soft underline-offset-4 decoration-teal/60 decoration-0 transition-[color,text-decoration-color] duration-200 hover:text-teal-deep hover:decoration-2 hover:underline"
+              className="group inline-flex items-baseline gap-1.5 rounded-sm font-mono text-[13px] text-slate transition-colors hover:text-navy-800"
             >
-              {link.label}
+              <span className="text-[11px] text-teal transition-colors group-hover:text-teal-deep">
+                {link.num}
+              </span>
+              <span className="uppercase tracking-[0.14em]">{link.label}</span>
             </a>
           ))}
         </nav>
@@ -59,7 +70,7 @@ export default function Header() {
             href={FACEBOOK_PAGE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-ink px-4 py-2 text-sm font-medium text-paper transition-colors duration-200 hover:bg-teal"
+            className="inline-flex items-center gap-2 rounded-md bg-navy-800 px-4 py-2 text-sm font-medium text-surface transition-colors duration-200 hover:bg-teal"
           >
             <FacebookIcon className="h-4 w-4" />
             <span className="hidden sm:inline">Follow on Facebook</span>
@@ -72,7 +83,7 @@ export default function Header() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
-            className="rounded-md border border-line p-2 text-ink transition-colors hover:border-teal hover:text-teal md:hidden"
+            className="rounded-md border border-linecool p-2 text-navy-800 transition-colors hover:border-cyan hover:text-teal md:hidden"
           >
             {menuOpen ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
           </button>
@@ -80,16 +91,17 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <div id="mobile-menu" className="border-t border-line bg-paper px-5 pb-5 pt-2 md:hidden">
+        <div id="mobile-menu" className="border-t border-linecool bg-surface px-5 pb-5 pt-2 md:hidden">
           <nav aria-label="Mobile" className="flex flex-col">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="rounded-md border-b border-line-soft py-3 text-base text-ink transition-colors hover:text-teal-deep"
+                className="flex items-baseline gap-3 border-b border-hair py-3 font-mono text-sm text-navy-800 transition-colors hover:text-teal"
               >
-                {link.label}
+                <span className="text-xs text-teal">{link.num}</span>
+                <span className="uppercase tracking-[0.14em]">{link.label}</span>
               </a>
             ))}
           </nav>
@@ -98,7 +110,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
-            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-ink px-4 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-teal"
+            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-navy-800 px-4 py-2.5 text-sm font-medium text-surface transition-colors hover:bg-teal"
           >
             <FacebookIcon className="h-4 w-4" />
             Follow on Facebook

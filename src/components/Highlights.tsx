@@ -1,161 +1,155 @@
-import type { ReactNode } from "react";
-import { CheckIcon } from "./Icons";
 import Reveal from "./Reveal";
+import SectionHead from "./SectionHead";
 
 function SampleTag() {
   return (
-    <span className="inline-flex items-center rounded-full border border-teal/40 bg-teal-mist/70 px-2.5 py-0.5 font-mono text-[11px] text-teal-deep">
+    <span className="rounded-full border border-cyan/50 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-teal">
       sample
     </span>
   );
 }
 
-function ArtifactCard({ rotate, children }: { rotate: string; children: ReactNode }) {
+function CategoryLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      className={`rounded-lg border border-line bg-card p-5 shadow-[0_14px_30px_-24px_rgba(38,35,29,0.5)] transition-transform duration-300 hover:rotate-0 ${rotate}`}
-    >
+    <p className="m-0 font-mono text-[11px] font-medium uppercase tracking-[0.24em] text-teal">
       {children}
-    </div>
+    </p>
   );
 }
 
-const TIP_ARTIFACT = (
-  <ArtifactCard rotate="-rotate-[0.6deg]">
-    <div className="flex items-center justify-between gap-3">
-      <SampleTag />
-      <span className="font-mono text-[11px] text-ink-faint">practical tip</span>
-    </div>
-    <p className="mt-4 font-mono text-sm leading-relaxed text-ink">
-      <span className="text-teal">$</span> rename it until it reads like prose
-    </p>
-    <p className="mt-4 border-t border-line-soft pt-3 text-sm leading-relaxed text-ink-soft">
-      Small habits that save hours — shared one at a time, tested on real code first.
-    </p>
-  </ArtifactCard>
-);
+/** Featured card — practical coding tips, with a tiny sample snippet. */
+function FeaturedTipsCard() {
+  return (
+    <article className="group flex h-full flex-col rounded-lg border border-linecool bg-surface p-7 transition-all duration-200 hover:-translate-y-1 hover:border-cyan/60 hover:shadow-[0_20px_44px_-28px_rgba(13,42,74,0.4)] sm:p-8">
+      <div className="flex items-center justify-between gap-3">
+        <CategoryLabel>tips</CategoryLabel>
+        <SampleTag />
+      </div>
+      <span aria-hidden="true" className="mt-4 block h-[2px] w-10 bg-cyan" />
 
-const PROJECT_ITEMS = [
-  { label: "A script that renames your screenshots", done: true },
-  { label: "A 30-line budget tracker", done: false },
-  { label: "This very landing page", done: true },
-];
+      <h3 className="mt-4 font-display text-2xl font-bold tracking-tight text-navy-800">
+        Practical coding tips
+      </h3>
+      <p className="mt-3 leading-relaxed text-slate">
+        Short, specific tips you can apply the same day — a git flag that saves a commit, a
+        one-liner that replaces a loop, a shortcut that earns back ten minutes. One tip, one tiny
+        example, nothing to skim past.
+      </p>
 
-const PROJECT_ARTIFACT = (
-  <ArtifactCard rotate="rotate-[0.6deg]">
-    <div className="flex items-center justify-between gap-3">
-      <SampleTag />
-      <span className="font-mono text-[11px] text-ink-faint">weekend-scale builds</span>
-    </div>
-    <ul className="mt-4 space-y-2.5">
-      {PROJECT_ITEMS.map((item) => (
-        <li key={item.label} className="flex items-start gap-3 text-sm text-ink">
-          <span
-            className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-[4px] border ${
-              item.done ? "border-teal bg-teal text-paper" : "border-line bg-paper"
-            }`}
-          >
-            {item.done && <CheckIcon className="h-2.5 w-2.5" />}
-          </span>
-          <span className="leading-snug">{item.label}</span>
-          <span
-            className={`ml-auto shrink-0 pt-0.5 font-mono text-[10px] ${
-              item.done ? "text-teal" : "text-ink-faint"
-            }`}
-          >
-            {item.done ? "shipped" : "next"}
-          </span>
+      {/* sample tip artifact */}
+      <div className="mt-6 overflow-hidden rounded-md border border-navy-700 bg-navy-900">
+        <div className="flex items-center justify-between border-b border-navy-700 px-4 py-2">
+          <span className="font-mono text-[11px] text-[#7d97b2]">tip № 001 — example</span>
+          <span className="font-mono text-[11px] text-cyan">sh</span>
+        </div>
+        <pre className="overflow-x-auto px-4 py-4 font-mono text-[12.5px] leading-relaxed text-codefg sm:text-[13px]">
+          <code>
+            <span className="text-slate-faint italic">{"# fix the last commit message, no new commit"}</span>
+            {"\n"}
+            <span className="text-cyan-bright">git</span> commit{" "}
+            <span className="text-sand">--amend --no-edit</span>
+          </code>
+        </pre>
+      </div>
+
+      <p className="mt-auto pt-6 font-mono text-xs text-slate">
+        format <span className="text-cyan">→</span> one tip · one example · real use case
+      </p>
+    </article>
+  );
+}
+
+/** Compact card — small projects. */
+function ProjectsCard() {
+  return (
+    <article className="group flex h-full flex-col rounded-lg border border-linecool bg-surface p-6 transition-all duration-200 hover:-translate-y-1 hover:border-cyan/60 hover:shadow-[0_20px_44px_-28px_rgba(13,42,74,0.4)] sm:p-7">
+      <div className="flex items-center justify-between gap-3">
+        <CategoryLabel>projects</CategoryLabel>
+        <SampleTag />
+      </div>
+      <span aria-hidden="true" className="mt-3 block h-[2px] w-10 bg-cyan" />
+
+      <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-navy-800">
+        Small projects
+      </h3>
+      <p className="mt-2 text-[15px] leading-relaxed text-slate">
+        Weekend-scale builds with real finish lines — small enough to complete, complete enough
+        to teach you something honest.
+      </p>
+
+      <ul className="mt-4 space-y-1.5 font-mono text-[12.5px] text-navy-700">
+        <li>
+          <span className="text-cyan">[ ]</span> fetch the forecast
         </li>
-      ))}
-    </ul>
-  </ArtifactCard>
-);
+        <li>
+          <span className="text-cyan">[ ]</span> shape it into clean json
+        </li>
+        <li>
+          <span className="text-teal">[x]</span> understand every line you wrote
+        </li>
+      </ul>
+      <p className="mt-auto pt-4 font-mono text-[11px] text-slate">
+        a sample outline — not a published post
+      </p>
+    </article>
+  );
+}
 
-const HUMOR_ARTIFACT = (
-  <ArtifactCard rotate="-rotate-[0.4deg]">
-    <div className="flex items-center justify-between gap-3">
-      <SampleTag />
-      <span className="font-mono text-[11px] text-ink-faint">dev humor</span>
-    </div>
-    <blockquote className="mt-4 text-[15px] font-medium leading-relaxed text-ink">
-      “There are only two hard things in computer science: cache invalidation, naming things,
-      and off-by-one errors.”
-    </blockquote>
-    <p className="mt-4 flex items-center justify-between border-t border-line-soft pt-3 font-mono text-[11px] text-ink-faint">
-      <span>groans: 4/5</span>
-      <span>recurrences: weekly</span>
-    </p>
-  </ArtifactCard>
-);
+/** Compact card — developer humor. */
+function HumorCard() {
+  return (
+    <article className="group flex h-full flex-col rounded-lg border border-linecool bg-surface p-6 transition-all duration-200 hover:-translate-y-1 hover:border-cyan/60 hover:shadow-[0_20px_44px_-28px_rgba(13,42,74,0.4)] sm:p-7">
+      <div className="flex items-center justify-between gap-3">
+        <CategoryLabel>humor</CategoryLabel>
+        <SampleTag />
+      </div>
+      <span aria-hidden="true" className="mt-3 block h-[2px] w-10 bg-cyan" />
 
-const TOPICS = [
-  {
-    index: "01",
-    title: "Practical coding tips",
-    description:
-      "Short, tested notes from real work — the git command you actually reach for, the CSS trick that finally centers the thing, the refactor that earns its keep. Read one, try it, keep what helps.",
-    artifact: TIP_ARTIFACT,
-  },
-  {
-    index: "02",
-    title: "Small projects",
-    description:
-      "Tiny builds with clear finish lines: a script, a page, a weekend tool. Projects small enough to ship and sharp enough to teach you something on the way.",
-    artifact: PROJECT_ARTIFACT,
-  },
-  {
-    index: "03",
-    title: "Developer humor",
-    description:
-      "Because debugging at 11 p.m. deserves company. Gentle, nerdy jokes about naming things, off-by-one errors, and the cache that was never actually the problem.",
-    artifact: HUMOR_ARTIFACT,
-  },
-];
+      <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-navy-800">
+        Developer humor
+      </h3>
+      <p className="mt-2 text-[15px] leading-relaxed text-slate">
+        The jokes we tell while the tests run. Dry, nerdy, and strictly for people who have
+        mass-renamed a variable by accident.
+      </p>
+
+      <blockquote className="mt-4 m-0 rounded-md border-l-2 border-cyan bg-paleblue px-4 py-3 font-mono text-[12.5px] leading-relaxed text-navy-700">
+        {"// I'd tell you a UDP joke,"}
+        <br />
+        {"// but you might not get it."}
+      </blockquote>
+      <p className="mt-auto pt-4 font-mono text-[11px] text-slate">sample joke — the archive lives on the page</p>
+    </article>
+  );
+}
 
 export default function Highlights() {
   return (
     <section id="content" aria-labelledby="content-heading" className="scroll-mt-24">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
-        <Reveal>
-          <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
-            <div className="max-w-2xl">
-              <p className="font-mono text-[13px] text-teal">{"// 01 · what you'll find"}</p>
-              <h2
-                id="content-heading"
-                className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl"
-              >
-                Three things, done properly.
-              </h2>
-              <p className="mt-4 max-w-xl leading-relaxed text-ink-soft">
-                Every post on the page lands in one of these buckets. The cards on the right are
-                clearly marked samples — the real ones will live on Facebook.
-              </p>
-            </div>
-            <p className="rounded-md border border-line bg-card px-3 py-2 font-mono text-xs text-ink-faint">
-              below: sample content only
-            </p>
-          </div>
-        </Reveal>
+        <SectionHead
+          num="01"
+          label="EXPLORE"
+          title={
+            <span id="content-heading">
+              What lives on the page<span className="text-cyan">.</span>
+            </span>
+          }
+          blurb="Three threads, one feed. Everything below is sample material so you know the shape of things."
+        />
 
-        <div className="mt-12 border-t border-line">
-          {TOPICS.map((topic, i) => (
-            <Reveal key={topic.index} delay={i * 90}>
-              <article className="group grid gap-7 border-b border-line px-2 py-10 transition-colors duration-300 hover:bg-card/80 sm:px-4 lg:grid-cols-12 lg:items-start lg:gap-10">
-                <div className="lg:col-span-1">
-                  <span className="font-mono text-sm font-medium text-teal">{topic.index}</span>
-                </div>
-                <div className="lg:col-span-6">
-                  <h3 className="font-display text-2xl font-semibold tracking-tight text-ink transition-colors duration-200 group-hover:text-teal-deep">
-                    {topic.title}
-                  </h3>
-                  <p className="mt-3 max-w-xl leading-relaxed text-ink-soft">
-                    {topic.description}
-                  </p>
-                </div>
-                <div className="lg:col-span-5">{topic.artifact}</div>
-              </article>
+        <div className="grid gap-5 lg:grid-cols-12">
+          <Reveal className="h-full lg:col-span-7">
+            <FeaturedTipsCard />
+          </Reveal>
+          <div className="flex flex-col gap-5 lg:col-span-5">
+            <Reveal delay={120} className="h-full">
+              <ProjectsCard />
             </Reveal>
-          ))}
+            <Reveal delay={220} className="h-full">
+              <HumorCard />
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

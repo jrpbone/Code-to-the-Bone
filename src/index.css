@@ -1,24 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  /* Code to the Bone — warm paper, charcoal ink, muted teal */
-  --color-paper: #faf6ef;
-  --color-card: #fffdf7;
-  --color-ink: #26231d;
-  --color-ink-soft: #5c574b;
-  --color-ink-faint: #8b8574;
-  --color-line: #e4ddcd;
-  --color-line-soft: #ede7d9;
-  --color-teal: #2e6e62;
-  --color-teal-deep: #245a50;
-  --color-teal-bright: #4c9484;
-  --color-teal-foam: #8fc2b4;
-  --color-teal-mist: #e2ede7;
-  --color-coal: #23211b;
-  --color-coal-raise: #2b2820;
-  --color-coal-line: #3a362a;
-  --color-sand: #e3c48f;
-  --color-paper-dim: #cfc8b8;
+  /* Code to the Bone — cool paper, deep navy ink, vivid cyan accent */
+  --color-mist: #f3f7fb; /* page background */
+  --color-surface: #fbfdff; /* white cards */
+  --color-paleblue: #e9f1f8; /* pale section backgrounds */
+  --color-linecool: #dbe7f0; /* borders */
+  --color-hair: #e6eef5; /* hairlines */
+
+  --color-navy-900: #0a1d33; /* footer, deepest panel */
+  --color-navy-800: #0d2a4a; /* headings, buttons */
+  --color-navy-700: #153b60;
+  --color-navy-600: #1d4a75;
+
+  --color-slate: #56718a; /* muted blue-gray body text */
+  --color-slate-faint: #5e7b99; /* comments on dark code */
+
+  --color-cyan: #0bc4ea; /* vivid cyan — decoration & dark surfaces */
+  --color-cyan-soft: #6edcf6;
+  --color-cyan-bright: #45d4f5; /* small text on navy */
+  --color-cyanmark: #c9effa; /* highlighter mark behind headings */
+
+  --color-teal: #0e7490; /* readable text/links on light backgrounds */
+  --color-teal-deep: #0b5f77;
+
+  --color-sand: #f2c98a; /* strings & numbers in code */
+  --color-codefg: #d5e4f4; /* code foreground */
 
   --font-display: "Space Grotesk", "IBM Plex Sans", sans-serif;
   --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
@@ -38,18 +45,18 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  background-color: var(--color-paper);
-  /* ambient layer: a quiet engineering-grid of dots */
-  background-image: radial-gradient(rgba(38, 35, 29, 0.055) 1px, transparent 1.3px);
-  background-size: 24px 24px;
-  color: var(--color-ink);
+  background-color: var(--color-mist);
+  /* ambient layer: a quiet blueprint grid of dots */
+  background-image: radial-gradient(rgba(13, 42, 74, 0.05) 1px, transparent 1.3px);
+  background-size: 26px 26px;
+  color: var(--color-navy-800);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--color-teal);
-  color: var(--color-paper);
+  background: var(--color-cyan);
+  color: var(--color-navy-900);
 }
 
 :focus-visible {
@@ -59,7 +66,7 @@ body {
 }
 
 .on-dark :focus-visible {
-  outline-color: var(--color-teal-foam);
+  outline-color: var(--color-cyan);
 }
 
 /* ---------- signature motion ---------- */
@@ -74,7 +81,7 @@ body {
 .mask-line > span {
   display: block;
   transform: translateY(115%);
-  animation: rise 0.9s cubic-bezier(0.22, 0.75, 0.2, 1) forwards;
+  animation: rise 0.85s cubic-bezier(0.22, 0.75, 0.2, 1) forwards;
   animation-delay: var(--d, 0s);
 }
 @keyframes rise {
@@ -127,22 +134,6 @@ body {
   }
 }
 
-/* slow topic ticker */
-.marquee-track {
-  animation: marquee 48s linear infinite;
-}
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 /* scroll reveals */
 .reveal {
   opacity: 0;
@@ -168,8 +159,7 @@ body {
     opacity: 1;
     transform: none;
   }
-  .cursor-blink,
-  .marquee-track {
+  .cursor-blink {
     animation: none;
   }
   .reveal {

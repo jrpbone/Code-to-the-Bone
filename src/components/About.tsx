@@ -2,53 +2,59 @@ import Reveal from "./Reveal";
 
 const PRINCIPLES = [
   {
-    term: "learn by building",
-    detail:
-      "Concepts stick when they survive contact with a real project. Start smaller than feels impressive, ship sooner than feels ready.",
+    num: "01",
+    term: "Learn by building",
+    detail: "Concepts stick only after they survive a real build. Ship smaller than feels impressive, sooner than feels ready.",
   },
   {
-    term: "share what's useful",
-    detail:
-      "No theory for theory's sake. If it won't help someone's ordinary Tuesday, it doesn't make the page.",
+    num: "02",
+    term: "Share what's useful",
+    detail: "If it saved an evening of head-scratching, it earns a post. If it won't help someone's ordinary Tuesday, it doesn't.",
   },
   {
-    term: "enjoy the process",
-    detail:
-      "The typos, the bugs, the “it works but I don't know why” moments — half the craft is learning to laugh inside them.",
+    num: "03",
+    term: "Enjoy the process",
+    detail: "The typos, the bugs, the mystery fixes — half the craft is learning to laugh inside them.",
   },
 ];
 
 export default function About() {
   return (
-    <section id="about" aria-labelledby="about-heading" className="scroll-mt-24">
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="scroll-mt-24 border-y border-linecool bg-paleblue"
+    >
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="grid gap-12 lg:grid-cols-12">
           {/* sticky intro column */}
           <div className="lg:col-span-5">
             <Reveal>
               <div className="lg:sticky lg:top-28">
-                <p className="font-mono text-[13px] text-teal">{"// 02 · about"}</p>
+                <div className="flex items-center gap-4">
+                  <p className="m-0 font-mono text-xs font-medium tracking-[0.28em] text-teal">
+                    02 <span className="text-cyan">/</span> ABOUT
+                  </p>
+                  <span aria-hidden="true" className="h-px w-10 bg-cyan" />
+                  <span aria-hidden="true" className="h-px flex-1 bg-linecool" />
+                </div>
+
                 <h2
                   id="about-heading"
-                  className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl"
+                  className="mt-4 font-display text-3xl font-bold leading-tight tracking-tight text-navy-800 sm:text-[2.4rem]"
                 >
-                  Learning by building, in public.
+                  Learning by building, <span className="text-teal">in public.</span>
                 </h2>
 
-                <div className="relative mt-10 rounded-lg border border-line bg-card p-6 pt-7">
-                  <span
-                    aria-hidden="true"
-                    className="absolute -top-6 left-5 font-display text-7xl leading-none text-teal/60"
-                  >
-                    “
-                  </span>
-                  <p className="font-display text-xl font-medium leading-snug text-ink">
-                    Understand it past the syntax — down to the bone.
+                <blockquote className="relative m-0 mt-10 rounded-md border border-linecool bg-surface p-6 pt-7 shadow-[0_18px_40px_-32px_rgba(13,42,74,0.5)]">
+                  <span aria-hidden="true" className="absolute inset-y-6 left-0 w-[3px] rounded-full bg-cyan" />
+                  <p className="m-0 font-display text-xl font-medium leading-snug text-navy-800">
+                    “Understand it past the syntax — down to the bone.”
                   </p>
-                  <p className="mt-3 font-mono text-xs text-ink-faint">
-                    the whole philosophy in one line
-                  </p>
-                </div>
+                  <footer className="mt-3 font-mono text-xs text-slate">
+                    — the whole philosophy, one line
+                  </footer>
+                </blockquote>
               </div>
             </Reveal>
           </div>
@@ -56,28 +62,26 @@ export default function About() {
           {/* flowing copy + principles */}
           <div className="lg:col-span-6 lg:col-start-7">
             <Reveal delay={120}>
-              <p className="text-lg leading-relaxed text-ink">
-                Code to the Bone started from one stubborn belief: you learn fastest when your
-                hands are on the keyboard. Read the docs, sure — then build the small thing,
-                break it, fix it, and only then call it understood.
+              <p className="m-0 text-lg leading-relaxed text-navy-700">
+                Code to the Bone exists because reading docs is only half the loop. You make the
+                small thing, break it, fix it — and only then call it understood.
               </p>
-              <p className="mt-5 leading-relaxed text-ink-soft">
-                Everything on the page comes out of that loop. Useful discoveries get passed
-                along while they're still warm — if something saved an evening of
-                head-scratching, it's worth a post. If it didn't, it doesn't get posted.
+              <p className="mt-4 leading-relaxed text-slate">
+                The page passes along whatever proved useful this week: a shortcut, a snippet, a
+                project pattern — shared while it's still warm.
               </p>
 
-              <dl className="mt-10 border-t border-line">
+              <dl className="mt-10 border-t border-linecool">
                 {PRINCIPLES.map((p) => (
                   <div
-                    key={p.term}
-                    className="grid gap-2 border-b border-line py-6 sm:grid-cols-[220px_1fr] sm:gap-6"
+                    key={p.num}
+                    className="grid gap-2 border-b border-linecool py-6 sm:grid-cols-[64px_200px_1fr] sm:gap-5"
                   >
-                    <dt className="font-mono text-sm font-medium text-teal">
-                      <span className="mr-2 text-ink-faint">{">_"}</span>
-                      {p.term}
-                    </dt>
-                    <dd className="m-0 text-[15px] leading-relaxed text-ink-soft">{p.detail}</dd>
+                    <span aria-hidden="true" className="font-mono text-sm font-medium text-cyan">
+                      {p.num}
+                    </span>
+                    <dt className="font-display text-[16px] font-bold text-navy-800">{p.term}</dt>
+                    <dd className="m-0 text-[15px] leading-relaxed text-slate">{p.detail}</dd>
                   </div>
                 ))}
               </dl>
