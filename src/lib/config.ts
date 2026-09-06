@@ -7,6 +7,6 @@
  *
  *  Every "Follow on Facebook" button and link on the site reads from here.
  * ========================================================================= */
-export const FACEBOOK_PAGE_URL = "https://www.facebook.com/"; // [FACEBOOK_PAGE_URL]
+export const FACEBOOK_PAGE_URL = "https://www.facebook.com/profile.php?id=61593337825526"; // [FACEBOOK_PAGE_URL]
 
 export const BRAND_NAME = "Code to the Bone";
