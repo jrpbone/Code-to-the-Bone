@@ -20,12 +20,12 @@ function CategoryLabel({ children }: { children: React.ReactNode }) {
 /** Featured card — practical coding tips, with a tiny sample snippet. */
 function FeaturedTipsCard() {
   return (
-    <article className="group flex h-full flex-col rounded-lg border border-linecool bg-surface p-7 transition-all duration-200 hover:-translate-y-1 hover:border-cyan/60 hover:shadow-[0_20px_44px_-28px_rgba(13,42,74,0.4)] sm:p-8">
+    <article className="flex h-full flex-col rounded-lg border border-linecool bg-surface p-7 sm:p-8">
       <div className="flex items-center justify-between gap-3">
         <CategoryLabel>tips</CategoryLabel>
         <SampleTag />
       </div>
-      <span aria-hidden="true" className="mt-4 block h-[2px] w-10 bg-cyan" />
+      <span aria-hidden="true" className="mt-4 block h-0.5 w-10 bg-cyan" />
 
       <h3 className="mt-4 font-display text-2xl font-bold tracking-tight text-navy-800">
         Practical coding tips
@@ -44,10 +44,10 @@ function FeaturedTipsCard() {
         </div>
         <pre className="overflow-x-auto px-4 py-4 font-mono text-[12.5px] leading-relaxed text-codefg sm:text-[13px]">
           <code>
-            <span className="text-slate-faint italic">{"# fix the last commit message, no new commit"}</span>
+            <span className="text-slate-faint italic">{"# edit only the last commit message"}</span>
             {"\n"}
             <span className="text-cyan-bright">git</span> commit{" "}
-            <span className="text-sand">--amend --no-edit</span>
+            <span className="text-sand">--amend --only</span>
           </code>
         </pre>
       </div>
@@ -62,12 +62,12 @@ function FeaturedTipsCard() {
 /** Compact card — small projects. */
 function ProjectsCard() {
   return (
-    <article className="group flex h-full flex-col rounded-lg border border-linecool bg-surface p-6 transition-all duration-200 hover:-translate-y-1 hover:border-cyan/60 hover:shadow-[0_20px_44px_-28px_rgba(13,42,74,0.4)] sm:p-7">
+    <article className="flex h-full flex-col rounded-lg border border-linecool bg-surface p-6 sm:p-7">
       <div className="flex items-center justify-between gap-3">
         <CategoryLabel>projects</CategoryLabel>
         <SampleTag />
       </div>
-      <span aria-hidden="true" className="mt-3 block h-[2px] w-10 bg-cyan" />
+      <span aria-hidden="true" className="mt-3 block h-0.5 w-10 bg-cyan" />
 
       <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-navy-800">
         Small projects
@@ -88,9 +88,6 @@ function ProjectsCard() {
           <span className="text-teal">[x]</span> understand every line you wrote
         </li>
       </ul>
-      <p className="mt-auto pt-4 font-mono text-[11px] text-slate">
-        a sample outline — not a published post
-      </p>
     </article>
   );
 }
@@ -98,12 +95,12 @@ function ProjectsCard() {
 /** Compact card — developer humor. */
 function HumorCard() {
   return (
-    <article className="group flex h-full flex-col rounded-lg border border-linecool bg-surface p-6 transition-all duration-200 hover:-translate-y-1 hover:border-cyan/60 hover:shadow-[0_20px_44px_-28px_rgba(13,42,74,0.4)] sm:p-7">
+    <article className="flex h-full flex-col rounded-lg border border-linecool bg-surface p-6 sm:p-7">
       <div className="flex items-center justify-between gap-3">
         <CategoryLabel>humor</CategoryLabel>
         <SampleTag />
       </div>
-      <span aria-hidden="true" className="mt-3 block h-[2px] w-10 bg-cyan" />
+      <span aria-hidden="true" className="mt-3 block h-0.5 w-10 bg-cyan" />
 
       <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-navy-800">
         Developer humor
@@ -118,7 +115,6 @@ function HumorCard() {
         <br />
         {"// but you might not get it."}
       </blockquote>
-      <p className="mt-auto pt-4 font-mono text-[11px] text-slate">sample joke — the archive lives on the page</p>
     </article>
   );
 }
@@ -135,7 +131,7 @@ export default function Highlights() {
               What lives on the page<span className="text-cyan">.</span>
             </span>
           }
-          blurb="Three threads, one feed. Everything below is sample material so you know the shape of things."
+          blurb="Coding tips, small projects, and developer humor. Get a taste with these examples."
         />
 
         <div className="grid gap-5 lg:grid-cols-12">

@@ -20,7 +20,7 @@ export default function Footer() {
             </span>
           </a>
           <p className="mt-2 font-mono text-xs text-[#7d97b2]">
-            © {new Date().getFullYear()} code to the bone — all sample content clearly marked
+            © {new Date().getFullYear()} Code to the Bone
           </p>
         </div>
 

@@ -50,7 +50,7 @@ const LINES: ReactNode[] = [
     <span className={PN}>)</span>
     <span
       aria-hidden="true"
-      className="cursor-blink ml-1.5 inline-block h-[15px] w-[8px] translate-y-[2px] rounded-[1px] bg-cyan"
+      className="cursor-blink ml-1.5 inline-block h-3.75 w-2 translate-y-0.5 rounded-[1px] bg-cyan"
     />
   </>,
 ];
@@ -98,9 +98,6 @@ export default function CodeWindow() {
         {/* status bar */}
         <div className="flex h-9 items-center justify-between border-t border-navy-700 px-4 font-mono text-[11px] text-[#7d97b2]">
           <span>python 3.12 · utf-8 · lf</span>
-          <span>
-            <span className="text-cyan">{"// "}</span>inspiration, not a post
-          </span>
         </div>
       </div>
 

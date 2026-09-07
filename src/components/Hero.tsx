@@ -12,7 +12,7 @@ export default function Hero() {
       {/* quiet pale-blue wash, top-right — flat, no glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-44 right-[-14%] h-[580px] w-[580px] rounded-full"
+        className="pointer-events-none absolute -top-44 right-[-14%] h-145 w-145 rounded-full"
         style={{
           background: "radial-gradient(circle, rgba(11,196,234,0.10) 0%, transparent 65%)",
         }}
@@ -20,7 +20,7 @@ export default function Hero() {
       {/* oversized brace watermark */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -right-8 top-4 hidden select-none font-mono text-[210px] leading-none text-navy-800/[0.045] lg:block"
+        className="pointer-events-none absolute -right-8 top-4 hidden select-none font-mono text-[210px] leading-none text-navy-800/4.5 lg:block"
       >
         {"{ }"}
       </span>
@@ -43,7 +43,7 @@ export default function Hero() {
               <span className="mask-line" style={d(0.24)}>
                 <span>
                   Code{" "}
-                  <mark className="box-decoration-clone rounded-[4px] bg-cyanmark px-1.5 text-navy-800 shadow-[inset_0_-0.28em_0_0_#8fe0f6]">
+                  <mark className="box-decoration-clone rounded-sm bg-cyanmark px-1.5 text-navy-800 shadow-[inset_0_-0.28em_0_0_#8fe0f6]">
                     to&nbsp;the&nbsp;Bone.
                   </mark>
                 </span>
@@ -63,7 +63,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 rounded-md bg-navy-800 px-5 py-3 text-[15px] font-medium text-surface transition-all duration-200 hover:-translate-y-0.5 hover:bg-teal"
               >
-                <FacebookIcon className="h-[18px] w-[18px]" />
+                <FacebookIcon className="h-4.5 w-4.5" />
                 Follow on Facebook
               </a>
               <a

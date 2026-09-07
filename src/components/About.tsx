@@ -47,7 +47,7 @@ export default function About() {
                 </h2>
 
                 <blockquote className="relative m-0 mt-10 rounded-md border border-linecool bg-surface p-6 pt-7 shadow-[0_18px_40px_-32px_rgba(13,42,74,0.5)]">
-                  <span aria-hidden="true" className="absolute inset-y-6 left-0 w-[3px] rounded-full bg-cyan" />
+                  <span aria-hidden="true" className="absolute inset-y-6 left-0 w-0.75 rounded-full bg-cyan" />
                   <p className="m-0 font-display text-xl font-medium leading-snug text-navy-800">
                     “Understand it past the syntax — down to the bone.”
                   </p>
@@ -75,13 +75,13 @@ export default function About() {
                 {PRINCIPLES.map((p) => (
                   <div
                     key={p.num}
-                    className="grid gap-2 border-b border-linecool py-6 sm:grid-cols-[64px_200px_1fr] sm:gap-5"
+                    className="grid grid-cols-[2rem_minmax(0,1fr)] gap-x-4 gap-y-2 border-b border-linecool py-6"
                   >
                     <span aria-hidden="true" className="font-mono text-sm font-medium text-cyan">
                       {p.num}
                     </span>
                     <dt className="font-display text-[16px] font-bold text-navy-800">{p.term}</dt>
-                    <dd className="m-0 text-[15px] leading-relaxed text-slate">{p.detail}</dd>
+                    <dd className="col-start-2 m-0 text-[15px] leading-relaxed text-slate">{p.detail}</dd>
                   </div>
                 ))}
               </dl>
