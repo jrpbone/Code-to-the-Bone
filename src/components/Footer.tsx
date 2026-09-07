@@ -1,4 +1,5 @@
 import { FACEBOOK_PAGE_URL } from "../lib/config";
+import { Link } from "react-router-dom";
 import { BrandMark } from "./Header";
 import { ArrowUpIcon, ExternalIcon, FacebookIcon } from "./Icons";
 
@@ -12,13 +13,13 @@ export default function Footer() {
     <footer className="on-dark border-t-2 border-cyan bg-navy-900">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div>
-          <a href="#top" className="inline-flex items-center gap-3 rounded-sm">
+          <Link to="/" className="inline-flex items-center gap-3 rounded-sm">
             <BrandMark onDark />
             <span aria-hidden="true" className="hidden h-5 w-px bg-navy-700 sm:block" />
             <span className="font-display text-[16px] font-bold tracking-tight text-surface">
               Code to the Bone
             </span>
-          </a>
+          </Link>
           <p className="mt-2 font-mono text-xs text-[#7d97b2]">
             © {new Date().getFullYear()} Code to the Bone
           </p>
